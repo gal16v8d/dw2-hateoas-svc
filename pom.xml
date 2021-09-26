@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.com.gsdd</groupId>
-	<artifactId>dw2-svc</artifactId>
+	<artifactId>dw2-hateoas-svc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dw2-svc</name>
+	<name>dw2-hateoas-svc</name>
 	<description>Spring Boot micro service for dw2 ps1 game</description>
 
 	<properties>
