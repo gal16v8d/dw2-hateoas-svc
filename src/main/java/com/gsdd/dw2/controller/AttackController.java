@@ -1,45 +1,45 @@
 package com.gsdd.dw2.controller;
 
+import com.gsdd.dw2.model.hateoas.AttackModel;
+import com.gsdd.dw2.persistence.entities.Attack;
+import com.gsdd.dw2.service.AbstractService;
+import com.gsdd.dw2.service.AttackService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.gsdd.dw2.model.hateoas.AttackModel;
-import com.gsdd.dw2.persistence.entities.Attack;
-import com.gsdd.dw2.service.AbstractService;
-import com.gsdd.dw2.service.AttackService;
-import io.swagger.annotations.Api;
-import lombok.RequiredArgsConstructor;
 
-@Api("Attack CRUD operations")
+@Tag(name = "Attack CRUD operations")
 @RequiredArgsConstructor
 @RefreshScope
 @RestController
 @RequestMapping("v1/attacks")
 public class AttackController extends AbstractController<Attack, AttackModel> {
 
-  private final AttackService attackService;
+    private final AttackService attackService;
 
-  @Override
-  public Long getId(AttackModel model) {
-    return model.getAttackId();
-  }
+    @Override
+    public Long getId(AttackModel model) {
+        return model.getAttackId();
+    }
 
-  @Override
-  public AbstractService<Attack, AttackModel> getService() {
-    return attackService;
-  }
+    @Override
+    public AbstractService<Attack, AttackModel> getService() {
+        return attackService;
+    }
 
-  @Override
-  public AttackModel defineModelWithLinks(AttackModel model) {
-    AttackModel linkedModel = super.defineModelWithLinks(model);
-    Link linkType = WebMvcLinkBuilder
-        .linkTo(
-            WebMvcLinkBuilder.methodOn(AttackTypeController.class).getById(model.getAttackTypeId()))
-        .withRel("attackType");
-    linkedModel.add(linkType);
-    return linkedModel;
-  }
-
+    @Override
+    public AttackModel defineModelWithLinks(AttackModel model) {
+        AttackModel linkedModel = super.defineModelWithLinks(model);
+        Link linkType =
+                WebMvcLinkBuilder.linkTo(
+                                WebMvcLinkBuilder.methodOn(AttackTypeController.class)
+                                        .getById(model.getAttackTypeId()))
+                        .withRel("attackType");
+        linkedModel.add(linkType);
+        return linkedModel;
+    }
 }
