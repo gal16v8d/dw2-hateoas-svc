@@ -14,9 +14,9 @@ import org.springframework.hateoas.RepresentationModel;
 @EqualsAndHashCode(callSuper = false)
 public class LevelModel extends RepresentationModel<LevelModel> {
 
-    private Long levelId;
+  private Long levelId;
 
-    @Schema(required = true, example = "Rookie")
-    @NotEmpty(message = "level name should not be empty")
-    private String name;
+  @Schema(required = true, example = "Rookie")
+  @NotEmpty(message = "level name should not be empty")
+  private String name;
 }

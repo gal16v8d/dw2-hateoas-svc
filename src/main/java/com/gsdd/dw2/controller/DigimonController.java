@@ -19,37 +19,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("v1/digimons")
 public class DigimonController extends AbstractController<Digimon, DigimonModel> {
 
-    private final DigimonService digimonService;
+  private final DigimonService digimonService;
 
-    @Override
-    public Long getId(DigimonModel model) {
-        return model.getDigimonId();
-    }
+  @Override
+  public Long getId(DigimonModel model) {
+    return model.getDigimonId();
+  }
 
-    @Override
-    public AbstractService<Digimon, DigimonModel> getService() {
-        return digimonService;
-    }
+  @Override
+  public AbstractService<Digimon, DigimonModel> getService() {
+    return digimonService;
+  }
 
-    @Override
-    public DigimonModel defineModelWithLinks(DigimonModel model) {
-        DigimonModel linkedModel = super.defineModelWithLinks(model);
-        Link levelLink =
-                WebMvcLinkBuilder.linkTo(
-                                WebMvcLinkBuilder.methodOn(LevelController.class)
-                                        .getById(linkedModel.getLevelId()))
-                        .withRel("level");
-        Link typeLink =
-                WebMvcLinkBuilder.linkTo(
-                                WebMvcLinkBuilder.methodOn(DigimonTypeController.class)
-                                        .getById(linkedModel.getDigimonTypeId()))
-                        .withRel("type");
-        Link elementLink =
-                WebMvcLinkBuilder.linkTo(
-                                WebMvcLinkBuilder.methodOn(ElementController.class)
-                                        .getById(linkedModel.getElementId()))
-                        .withRel("element");
-        linkedModel.add(levelLink, typeLink, elementLink);
-        return linkedModel;
-    }
+  @Override
+  public DigimonModel defineModelWithLinks(DigimonModel model) {
+    DigimonModel linkedModel = super.defineModelWithLinks(model);
+    Link levelLink =
+        WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(LevelController.class).getById(linkedModel.getLevelId()))
+            .withRel("level");
+    Link typeLink =
+        WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(DigimonTypeController.class)
+                    .getById(linkedModel.getDigimonTypeId()))
+            .withRel("type");
+    Link elementLink =
+        WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(ElementController.class)
+                    .getById(linkedModel.getElementId()))
+            .withRel("element");
+    linkedModel.add(levelLink, typeLink, elementLink);
+    return linkedModel;
+  }
 }

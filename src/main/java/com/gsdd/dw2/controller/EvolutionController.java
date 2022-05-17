@@ -19,32 +19,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("v1/evolutions")
 public class EvolutionController extends AbstractController<Evolution, EvolutionModel> {
 
-    private final EvolutionService evolutionService;
+  private final EvolutionService evolutionService;
 
-    @Override
-    public Long getId(EvolutionModel model) {
-        return model.getEvolutionId();
-    }
+  @Override
+  public Long getId(EvolutionModel model) {
+    return model.getEvolutionId();
+  }
 
-    @Override
-    public AbstractService<Evolution, EvolutionModel> getService() {
-        return evolutionService;
-    }
+  @Override
+  public AbstractService<Evolution, EvolutionModel> getService() {
+    return evolutionService;
+  }
 
-    @Override
-    public EvolutionModel defineModelWithLinks(EvolutionModel model) {
-        EvolutionModel linkedModel = super.defineModelWithLinks(model);
-        Link baseLink =
-                WebMvcLinkBuilder.linkTo(
-                                WebMvcLinkBuilder.methodOn(DigimonController.class)
-                                        .getById(linkedModel.getBaseDigimonId()))
-                        .withRel("baseDigimon");
-        Link evolvedLink =
-                WebMvcLinkBuilder.linkTo(
-                                WebMvcLinkBuilder.methodOn(DigimonController.class)
-                                        .getById(linkedModel.getEvolvedDigimonId()))
-                        .withRel("evolvedDigimon");
-        linkedModel.add(baseLink, evolvedLink);
-        return linkedModel;
-    }
+  @Override
+  public EvolutionModel defineModelWithLinks(EvolutionModel model) {
+    EvolutionModel linkedModel = super.defineModelWithLinks(model);
+    Link baseLink =
+        WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(DigimonController.class)
+                    .getById(linkedModel.getBaseDigimonId()))
+            .withRel("baseDigimon");
+    Link evolvedLink =
+        WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(DigimonController.class)
+                    .getById(linkedModel.getEvolvedDigimonId()))
+            .withRel("evolvedDigimon");
+    linkedModel.add(baseLink, evolvedLink);
+    return linkedModel;
+  }
 }

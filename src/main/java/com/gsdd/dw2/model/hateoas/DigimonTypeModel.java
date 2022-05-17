@@ -14,9 +14,9 @@ import org.springframework.hateoas.RepresentationModel;
 @EqualsAndHashCode(callSuper = false)
 public class DigimonTypeModel extends RepresentationModel<DigimonTypeModel> {
 
-    private Long digimonTypeId;
+  private Long digimonTypeId;
 
-    @Schema(required = true, example = "Data")
-    @NotEmpty(message = "digimon type name should not be empty")
-    private String name;
+  @Schema(required = true, example = "Data")
+  @NotEmpty(message = "digimon type name should not be empty")
+  private String name;
 }

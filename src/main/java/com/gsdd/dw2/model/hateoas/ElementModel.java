@@ -14,9 +14,9 @@ import org.springframework.hateoas.RepresentationModel;
 @EqualsAndHashCode(callSuper = false)
 public class ElementModel extends RepresentationModel<ElementModel> {
 
-    private Long elementId;
+  private Long elementId;
 
-    @Schema(required = true, example = "Machine")
-    @NotEmpty(message = "element name should not be empty")
-    private String name;
+  @Schema(required = true, example = "Machine")
+  @NotEmpty(message = "element name should not be empty")
+  private String name;
 }

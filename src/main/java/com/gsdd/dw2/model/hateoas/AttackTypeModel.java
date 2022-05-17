@@ -14,9 +14,9 @@ import org.springframework.hateoas.RepresentationModel;
 @EqualsAndHashCode(callSuper = false)
 public class AttackTypeModel extends RepresentationModel<AttackTypeModel> {
 
-    private Long attackTypeId;
+  private Long attackTypeId;
 
-    @Schema(required = true, example = "Assist")
-    @NotEmpty(message = "attack type name should not be empty")
-    private String name;
+  @Schema(required = true, example = "Assist")
+  @NotEmpty(message = "attack type name should not be empty")
+  private String name;
 }
