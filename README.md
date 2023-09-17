@@ -1,23 +1,27 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+This project is not longer receiving updates, please check [dw2-svc](https://github.com/gal16v8d/dw2-svc) instead
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/maven-plugin/)
+### Pre-requisites
 
-### Swagger
+* Maven 3
+* Java 17
 
-http://localhost:8094/swagger-ui/
+### Notes
 
 ### Spring Admin Client
 
 I add some dependencies for admin this project as client,
-check admin-server project for further related info.
+check [admin-server](https://github.com/gal16v8d/admin-server) project for further related info.
 
 ### Spring Zipkin Client
 
 I add some dependencies for admin logging in this project,
-please check https://zipkin.io/pages/quickstart for more info.
-Docker image must be running with a command like:
+please check [zipkin.io](https://zipkin.io/pages/quickstart) for more info.
+
+To run zipkin please use:
 docker run -d -p 9411:9411 openzipkin/zipkin
+
+### Swagger
+
+http://localhost:8094/swagger-ui/
